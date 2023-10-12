@@ -103,7 +103,7 @@ jobs:
     - name: SSH connection to Actions
 #      uses: csexton/debugger-action@master
       if: env.SSH_ACTIONS == 'true'
-      uses: P3TERX/ssh2actions@main
+      uses: linwengjian-gmail/ssh2actions@main
 #     uses: mxschmitt/action-tmate@v3
       timeout-minutes: 30
 
@@ -132,7 +132,7 @@ jobs:
       run: df -hT
 
     - name: Upload bin directory
-      uses: actions/upload-artifact@main
+      uses: linwengjian-gmail/upload-artifact@main
       if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
       with:
         name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
@@ -148,7 +148,7 @@ jobs:
         echo "::set-output name=status::success"
 
     - name: Upload firmware directory
-      uses: actions/upload-artifact@main
+      uses: linwengjian-gmail/upload-artifact@main
       if: steps.organize.outputs.status == 'success' && !cancelled()
       with:
         name: OpenWrt_firmware${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
@@ -183,7 +183,7 @@ jobs:
         echo "::set-output name=status::success"
 
     - name: Upload firmware to release
-      uses: softprops/action-gh-release@master
+      uses: linwengjian-gmail/action-gh-release@master
       if: steps.tag.outputs.status == 'success' && !cancelled()
       env:
         GITHUB_TOKEN: ${{ secrets.LEO_TOKEN }}
@@ -193,13 +193,13 @@ jobs:
         files: ${{ env.FIRMWARE }}/*
 
     - name: Delete workflow runs
-      uses: GitRML/delete-workflow-runs@main
+      uses: linwengjian-gmail/delete-workflow-runs@main
       with:
         retain_days: 20
         keep_minimum_runs: 5
 
     - name: Remove old Releases
-      uses: dev-drprasad/delete-older-releases@v0.1.0
+      uses: linwengjian-gmail/delete-older-releases@v0.1.0
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       with:
         keep_latest: 8
