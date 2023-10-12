@@ -199,7 +199,7 @@ jobs:
         keep_minimum_runs: 5
 
     - name: Remove old Releases
-      uses: linwengjian-gmail/delete-older-releases@v0.1.0
+      uses: linwengjian-gmail/delete-older-releases@master
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       with:
         keep_latest: 8
