@@ -24,9 +24,9 @@ git clone https://github.com/open-mesh-mirror/batman-adv.git package/batman-adv
 # 增加ssr（上述kenzok8/openwrt-packages已包含）
 # git clone https://github.com/kenzok8/openwrt-packages.git package/openwrt-packages
 # git clone https://github.com/fw876/helloworld.git package/diy-packages/luci-app-ssr-plus
-
+echo "src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall-packages.git;main" >> "feeds.conf.default"
 #  增加luci-app-unblockneteasemusic，来源immortalwrt
-git clone https://github.com/immortalwrt/luci-app-unblockneteasemusic.git package/luci-app-unblockneteasemusic
-git clone https://github.com/haiibo/openwrt-packages
+#git clone https://github.com/immortalwrt/luci-app-unblockneteasemusic.git package/luci-app-unblockneteasemusic
+#git clone https://github.com/haiibo/openwrt-packages
 # CONFIG_PACKAGE_luci-app-filebrowser=y
 #git clone https://github.com/immortalwrt/openwrt-filebrowser.git package/luci-app-filebrowser
